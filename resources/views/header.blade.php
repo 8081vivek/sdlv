@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.S.D.L.V.I. Inter College - Excellence in Education Since 1997</title>
     <link rel="icon" type="image/jpeg" href="image/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* ========== GLOBAL STYLES ========== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ============================================================
+           GLOBAL STYLES
+           ============================================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --primary: #003366;
@@ -24,33 +21,22 @@
             --accent-dark: #cc7a00;
             --light: #f8f9fa;
             --dark: #2d3748;
-            --success: #28a745;
-            --danger: #dc3545;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --radius: 8px;
-            
+
             --bg-color: #f5f7fa;
             --text-color: #333333;
             --card-bg: white;
             --header-bg: white;
-            --footer-bg: linear-gradient(135deg, #003366, #004080);
-            --section-bg-light: linear-gradient(135deg, #f8f9fa, #e9ecef);
             --nav-bg: white;
             --nav-hover: rgba(0, 0, 0, 0.05);
             --border-color: #e2e8f0;
             --gradient-primary: linear-gradient(135deg, #003366, #0066cc);
             --gradient-accent: linear-gradient(135deg, #ff9900, #ffcc66);
-        }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            border-radius: 20px;
+            --header-h: 140px;
         }
 
         [data-theme="dark"] {
@@ -58,8 +44,6 @@
             --text-color: #f8f9fa;
             --card-bg: #2d2d2d;
             --header-bg: #1a1a1a;
-            --footer-bg: linear-gradient(135deg, #001a33, #00264d);
-            --section-bg-light: linear-gradient(135deg, #2d2d2d, #3d3d3d);
             --nav-bg: #1a1a1a;
             --nav-hover: rgba(255, 255, 255, 0.1);
             --border-color: #444444;
@@ -69,6 +53,8 @@
             --gradient-primary: linear-gradient(135deg, #004080, #0066cc);
             --gradient-accent: linear-gradient(135deg, #ff9900, #ffcc66);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -85,30 +71,15 @@
             font-weight: 700;
             color: var(--primary);
         }
-
         [data-theme="dark"] h1,
         [data-theme="dark"] h2,
         [data-theme="dark"] h3,
         [data-theme="dark"] h4,
-        [data-theme="dark"] h5 {
-            color: #f8f9fa;
-        }
+        [data-theme="dark"] h5 { color: #f8f9fa; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
 
         .container {
             width: 100%;
@@ -117,697 +88,721 @@
             padding: 0 20px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            font-size: 1rem;
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 20px;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-accent {
-            background: var(--gradient-accent);
-        }
-
-        .btn-accent:hover {
-            background: linear-gradient(135deg, var(--accent-dark), var(--accent));
-        }
-
-        /* ========== ENHANCED HEADER ========== */
-        header {
+        /* ============================================================
+           HEADER — premium sticky, desktop-only fixed
+           ============================================================ */
+        .site-header {
             background: var(--header-bg);
-            color: #333;
-            box-shadow: var(--shadow-lg);
+            color: var(--text-color);
+            width: 100%;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .header-sticky-core {
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: var(--transition);
-            width: 100%;
+            background: var(--header-bg);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .site-header.is-stuck .header-sticky-core {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
 
-        [data-theme="dark"] header {
-            color: #f8f9fa;
-        }
-
-        /* Top Bar */
+        /* Top info strip */
         .header-top-bar {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.04);
             border-bottom: 1px solid var(--border-color);
-            color: #555;
-            display: block;
+            font-size: 0.85rem;
+            padding: 8px 0;
         }
-
-        [data-theme="dark"] .header-top-bar {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ccc;
-        }
+        [data-theme="dark"] .header-top-bar { background: rgba(255, 255, 255, 0.04); }
+        [data-theme="dark"] .header-info-item,
+        [data-theme="dark"] .social-icon { color: #ccc; }
 
         .header-top-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 15px;
+            flex-wrap: wrap;
         }
-
         .header-info {
             display: flex;
-            gap: 25px;
             align-items: center;
+            gap: 22px;
             flex-wrap: wrap;
         }
-
         .header-info-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
+            gap: 8px;
             opacity: 0.9;
-            transition: var(--transition);
             white-space: nowrap;
-            color: #555;
+            color: var(--text-color);
         }
+        .header-info-item a { color: inherit; }
+        .header-info-item a:hover { color: var(--accent); }
+        .header-info-item i { color: var(--accent); }
 
-        [data-theme="dark"] .header-info-item {
-            color: #ccc;
-        }
-
-        .header-info-item:hover {
-            opacity: 1;
-            color: var(--accent);
-        }
-
-        .header-info-item i {
-            color: var(--accent);
-            font-size: 1rem;
-        }
-
-        .header-top-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .header-social {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
+        .header-social { display: flex; gap: 8px; }
         .social-icon {
-            display: flex;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.08);
+            background: rgba(0, 0, 0, 0.06);
+            color: var(--text-color);
+            font-size: 0.8rem;
             transition: var(--transition);
-            color: #555;
-            font-size: 0.9rem;
         }
-
-        [data-theme="dark"] .social-icon {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ccc;
-        }
-
+        [data-theme="dark"] .social-icon { background: rgba(255, 255, 255, 0.08); }
         .social-icon:hover {
             background: var(--accent);
-            color: white;
+            color: #fff;
             transform: translateY(-2px);
         }
 
-        /* Main Header */
-        .header-main {
-            padding: 20px 0;
-        }
-
+        /* Main row */
         .header-main-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 24px;
+            padding: 14px 0;
+            transition: padding 0.3s ease;
             flex-wrap: wrap;
         }
 
-        /* Logo Section */
+        /* Branding */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 20px;
-            flex-shrink: 0;
-            min-width: 0;
+            gap: 14px;
             flex: 1;
+            min-width: 0;
+            text-decoration: none;
+            color: inherit;
         }
-
         .logo {
-            width: 90px;
-            height: 90px;
+            width: 72px; height: 72px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--border-color);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            background: linear-gradient(45deg, #fff, #f0f0f0);
-            padding: 5px;
+            background: #fff;
+            padding: 3px;
             flex-shrink: 0;
+            transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
         }
-
-        .logo:hover {
-            transform: scale(1.1);
-            border-color: var(--accent);
-        }
-
-        .school-name {
-            text-align: left;
-            min-width: 0;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .school-name h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+        .logo-container:hover .logo { border-color: var(--accent); }
+        .school-name { min-width: 0; overflow: hidden; }
+        .school-name-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
             color: var(--primary);
             line-height: 1.2;
+            margin: 0 0 4px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            letter-spacing: -0.5px;
+            transition: font-size 0.3s ease;
         }
-
-        [data-theme="dark"] .school-name h1 {
-            color: #f8f9fa;
-        }
-
-        .school-name p {
-            font-size: 1rem;
-            opacity: 0.9;
+        [data-theme="dark"] .school-name-title { color: #f8f9fa; }
+        .school-meta {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-color);
+            opacity: 0.8;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: #666;
+            transition: font-size 0.3s ease;
         }
+        .school-meta i { color: var(--accent); }
+        .meta-dot { opacity: 0.5; }
 
-        [data-theme="dark"] .school-name p {
-            color: #ccc;
-        }
-
-        .school-name p i {
-            color: var(--accent);
-            font-size: 0.9rem;
-        }
-
-        /* Header Controls */
+        /* Controls */
         .header-controls {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-left: auto;
+            gap: 10px;
             flex-shrink: 0;
         }
 
-        /* Theme Toggle */
-        .day-night-toggle {
-            position: relative;
-            width: 55px;
-            height: 28px;
-            background: var(--card-bg);
-            border-radius: 30px;
+        /* Theme toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
             cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 2px solid var(--border-color);
+            padding: 4px;
+            border-radius: 999px;
+        }
+        .theme-toggle:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+        .theme-toggle-track {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 8px;
-            flex-shrink: 0;
+            width: 52px; height: 28px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 999px;
+            position: relative;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-
-        .day-night-toggle:hover {
-            transform: scale(1.05);
-        }
-
-        .day-night-toggle i {
-            font-size: 0.9rem;
-            transition: var(--transition);
-            z-index: 2;
-        }
-
-        .day-night-toggle #sunIcon {
-            color: #ff9900;
-        }
-
-        .day-night-toggle #moonIcon {
-            color: #555;
-        }
-
-        [data-theme="dark"] .day-night-toggle #sunIcon {
-            color: #777;
-        }
-
-        [data-theme="dark"] .day-night-toggle #moonIcon {
-            color: #ffcc66;
-        }
-
-        .toggle-thumb {
+        .theme-toggle-thumb {
             position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 20px;
-            height: 20px;
+            top: 2px; left: 2px;
+            width: 20px; height: 20px;
             background: var(--accent);
             border-radius: 50%;
-            transition: var(--transition);
-            z-index: 1;
-        }
-
-        [data-theme="dark"] .toggle-thumb {
-            left: 29px;
-            background: #ff9900;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-nav-toggle {
-            background: var(--gradient-accent);
-            border: none;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            position: relative;
+            transition: left 0.35s cubic-bezier(.4,0,.2,1), background-color 0.3s ease;
             overflow: hidden;
-            z-index: 1001;
-            flex-shrink: 0;
         }
-
-        .mobile-nav-toggle::before {
-            content: '';
+        .theme-toggle-thumb i {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: var(--transition);
+            font-size: 0.7rem;
+            color: #fff;
+            transition: opacity 0.25s ease, transform 0.35s ease;
         }
+        .theme-toggle-thumb .sun-icon { opacity: 1; transform: rotate(0) scale(1); }
+        .theme-toggle-thumb .moon-icon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+        [data-theme="dark"] .theme-toggle-thumb { left: 26px; }
+        [data-theme="dark"] .theme-toggle-thumb .sun-icon { opacity: 0; transform: rotate(90deg) scale(0.4); }
+        [data-theme="dark"] .theme-toggle-thumb .moon-icon { opacity: 1; transform: rotate(0) scale(1); }
 
-        .mobile-nav-toggle:hover::before {
-            left: 100%;
+        /* Mobile hamburger */
+        .mobile-nav-toggle {
+            display: none;
+            background: var(--gradient-accent);
+            color: #fff;
+            border: none;
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .mobile-nav-toggle:hover { transform: scale(1.05); box-shadow: var(--shadow); }
+        .mobile-nav-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+        .mobile-nav-toggle i { transition: transform 0.3s ease; }
+        .mobile-nav-toggle[aria-expanded="true"] i { transform: rotate(90deg); }
 
-        .mobile-nav-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .mobile-nav-toggle i {
-            font-size: 1.3rem;
-            transition: var(--transition);
-        }
-
-        .mobile-nav-toggle.active i {
-            transform: rotate(90deg);
-        }
-
-        /* Header Contact Info */
+        /* Clock + admission */
         .header-contact {
             display: flex;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 14px;
             margin-left: auto;
+            flex-shrink: 0;
         }
-
         .header-clock {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.05);
-            padding: 10px 15px;
-            border-radius: var(--radius);
-            min-width: 140px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid var(--border-color);
-            color: #555;
-        }
-
-        [data-theme="dark"] .header-clock {
-            background: rgba(255, 255, 255, 0.05);
-            color: #ccc;
-        }
-
-        .clock-time {
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .clock-date {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            white-space: nowrap;
-        }
-
-        .header-highlight {
-            background: var(--gradient-accent);
-            color: white;
-            padding: 10px 20px;
-            border-radius: var(--radius);
-            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 10px;
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 6px 12px;
+            transition: transform 0.3s ease;
+        }
+        [data-theme="dark"] .header-clock { background: rgba(255,255,255,0.05); }
+        .clock-icon {
+            color: var(--accent);
+            font-size: 1rem;
+            animation: clockTick 2s ease-in-out infinite;
+        }
+        @keyframes clockTick {
+            0%, 100% { transform: rotate(0); }
+            50% { transform: rotate(15deg); }
+        }
+        .clock-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .clock-time {
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            font-variant-numeric: tabular-nums;
+        }
+        .clock-date { font-size: 0.7rem; opacity: 0.75; }
+
+        /* Admission badge */
+        .admission-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: var(--radius);
+            background: var(--gradient-accent);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .admission-badge::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: admissionShine 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes admissionShine {
+            0%, 60% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .admission-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        }
+        .admission-badge i { font-size: 1rem; }
+        .admission-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
             white-space: nowrap;
         }
+        .admission-text strong { font-size: 0.8rem; }
+        .admission-text em { font-size: 0.72rem; font-style: normal; opacity: 0.9; }
+        .admission-arrow { transition: transform 0.25s ease; }
+        .admission-badge:hover .admission-arrow { transform: translateX(4px); }
 
-        .header-highlight:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Navigation */
-        nav {
+        /* Nav */
+        .site-nav {
             background: var(--nav-bg);
-            padding: 0;
-            width: 100%;
-            transition: var(--transition);
             border-top: 1px solid var(--border-color);
+            transition: var(--transition);
         }
-
         .nav-links {
             display: flex;
-            gap: 0;
-            height: 60px;
-            width: 100%;
             justify-content: space-between;
+            height: 52px;
         }
-
         .nav-links li {
             flex: 1;
-            text-align: center;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             min-width: 0;
         }
-
+        /* FIX 3: No zoom animation — only smooth color + underline */
         .nav-links li a {
-            padding: 0 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             height: 100%;
-            transition: var(--transition);
+            width: 100%;
+            padding: 0 12px;
+            font-size: 0.92rem;
             font-weight: 500;
-            position: relative;
-            overflow: hidden;
+            color: var(--text-color);
             border-bottom: 3px solid transparent;
-            gap: 10px;
-            font-size: 1rem;
             white-space: nowrap;
-            width: 100%;
-            color: #555;
+            transform: none;
+            transition: color 0.25s ease, border-bottom-color 0.25s ease, background-color 0.25s ease;
         }
-
-        [data-theme="dark"] .nav-links li a {
-            color: #ccc;
-        }
-
-        .nav-links li a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+        [data-theme="dark"] .nav-links li a { color: #ccc; }
+        .nav-links li a:hover,
+        .nav-links li a:focus-visible {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
             background: var(--nav-hover);
-            transition: var(--transition);
-            z-index: -1;
+            outline: none;
+            transform: none;
+        }
+        .nav-links li a i { color: var(--accent); }
+        .nav-links li a::before { display: none; }
+
+        /* ============================================================
+           DESKTOP-ONLY FIXED HEADER on scroll (mobile pe normal)
+           ============================================================ */
+        @media (min-width: 992px) {
+            .site-header.is-stuck .header-sticky-core {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+                background: var(--header-bg);
+                animation: slideDownHeader 0.35s ease-out;
+            }
+            @keyframes slideDownHeader {
+                from { transform: translateY(-100%); opacity: 0; }
+                to   { transform: translateY(0);     opacity: 1; }
+            }
+
+            .site-header.is-stuck .header-main-content { padding: 6px 0; gap: 16px; }
+            .site-header.is-stuck .logo             { width: 100px; height: 100px; }
+            .site-header.is-stuck .school-name-title   { font-size: 30px; }
+            .site-header.is-stuck .school-meta      { font-size: 0.68rem; }
+            /* .site-header.is-stuck .site-nav         { border-t; } */
+            .site-header.is-stuck .nav-links        { height: 44px; }
+            .site-header.is-stuck .nav-links li a   { font-size: 0.85rem; padding: 0 10px; border-bottom-width: 3px; }
+            .site-header.is-stuck .header-clock,
+            .site-header.is-stuck .admission-badge  { transform: scale(0.88); }
+
+            .site-header.is-stuck + .site-header-spacer { height: 100px; }
         }
 
-        .nav-links li a:hover::before {
-            left: 0;
+       .site-header.is-stuck .logo {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  will-change: transform; /* smooth rendering */
+}
+
+.site-header.is-stuck .logo:hover {
+  border-color: var(--accent);
+  transform: scale(0.88) rotate(-3deg);
+  box-shadow: 0 0 15px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+        /* Spacer — sirf desktop pe height milti hai */
+        .site-header-spacer {
+            height: 0;
+            transition: height 0.3s ease;
         }
 
-        .nav-links li a:hover {
-            color: var(--accent);
-            border-bottom: 3px solid var(--accent);
-        }
-
-        .nav-links li a i {
-            color: var(--accent);
-            font-size: 1rem;
-        }
-
-        /* ========== ENHANCED SLIDER SECTION ========== */
+        /* ============================================================
+           HERO SLIDER — cinematic (clean overlay, no blue tint)
+           ============================================================ */
         .hero {
             position: relative;
-            height: 100vh;
-            min-height: 600px;
-            max-height: 900px;
+            height: 85vh;
+            min-height: 540px;
+            max-height: 920px;
             overflow: hidden;
-            color: white;
-            text-align: center;
+            background: #0a0e1a;
+            isolation: isolate;
+            text-align: left;
+            color: #fff;
         }
-
-        .slider-container {
+        .slider-container,
+        #slider {
             position: relative;
             width: 100%;
             height: 100%;
             overflow: hidden;
-        }
-
-        /* Modern Slider with fade effect */
-        .slider {
-            width: 100%;
-            height: 100%;
-            position: relative;
         }
 
         .slide {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+            z-index: 1;
             transform: translateZ(0);
-            will-change: opacity;
         }
+        .slide.active { opacity: 1; pointer-events: auto; z-index: 2; }
 
-        .slide.active {
-            opacity: 1;
-        }
-
-        .slide img {
+        .slide img.slide-image {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+            object-position: center 30%;
+            transform: scale(1);
+            transition: transform 12s ease-out;
+            will-change: transform;
+        }
+        .slide.active img.slide-image { transform: scale(1.1); }
+
+        /* FIX 2: Clean dark gradient (no blue tint) */
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.75) 0%,
+                rgba(0, 0, 0, 0.45) 45%,
+                rgba(0, 0, 0, 0.15) 100%
+            );
+            z-index: 3;
+            pointer-events: none;
+        }
+        .slide-overlay::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, #f5e6a3, #d4af37, transparent);
+            opacity: 0.7;
         }
 
         .slide-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            width: 90%;
-            max-width: 900px;
-            z-index: 2;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-        }
-
-        .slide-content h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            margin-bottom: 25px;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            line-height: 1.2;
-            font-weight: 900;
-            animation: fadeInUp 1s ease;
-        }
-
-        .slide-content p {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            margin-bottom: 35px;
-            opacity: 0.95;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .hero-btns {
+            position: relative;
+            z-index: 10;
+            height: 100%;
             display: flex;
-            gap: 20px;
+            flex-direction: column;
             justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s both;
+            padding: 0 8%;
+            max-width: 900px;
+            color: #fff;
+            background: none;
+            text-align: left;
+            transform: none;
+            top: auto;
+            left: auto;
+            margin: 0;
         }
 
+        .slide-eyebrow,
+        .slide-title,
+        .slide-desc,
+        .slide-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #d4af37;
+            margin-bottom: 1.2rem;
+            transition-delay: 0s;
+        }
+        .slide-eyebrow::before {
+            content: '';
+            width: 32px; height: 2px;
+            background: linear-gradient(90deg, #d4af37, transparent);
+        }
+
+        .slide-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2.2rem, 5.2vw, 4.4rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #ffffff;
+            text-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+            margin: 0;
+            transition-delay: 0.1s;
+        }
+
+        .slide-desc {
+            font-size: clamp(1rem, 1.5vw, 1.35rem);
+            line-height: 1.7;
+            max-width: 600px;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.92);
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+            transition-delay: 0.25s;
+        }
+
+        .slide-cta {
+            margin-top: 2.2rem;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-eyebrow,
+        .slide.active .slide-title,
+        .slide.active .slide-desc,
+        .slide.active .slide-cta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA buttons */
+        .hero .btn-gold,
+        .hero .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2.4rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .hero .btn-gold {
+            background: linear-gradient(145deg, #d4af37, #b8962e);
+            color: #0b0f1c;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 28px -8px rgba(212, 175, 55, 0.5);
+        }
+        .hero .btn-gold:hover {
+            background: linear-gradient(145deg, #e6c34a, #d4af37);
+            box-shadow: 0 14px 34px -6px rgba(212, 175, 55, 0.7);
+            transform: translateY(-3px);
+        }
+        .hero .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.65);
+            color: #ffffff;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .hero .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #d4af37;
+            color: #f5e6a3;
+            transform: translateY(-3px);
+        }
+
+        /* Slider arrows */
         .slider-nav {
             position: absolute;
             top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
             transform: translateY(-50%);
-            padding: 0 25px;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .slider-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 55px;
-            height: 55px;
+            z-index: 50;
+            width: 52px; height: 52px;
             border-radius: 50%;
-            cursor: pointer;
+            background: rgba(10, 20, 40, 0.45);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
-            backdrop-filter: blur(5px);
-            pointer-events: all;
-            font-size: 1.3rem;
-        }
-
-        .slider-btn:hover {
-            background: var(--accent);
-            transform: scale(1.1);
-        }
-
-        /* Modern Dots Navigation */
-        .slider-dots {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            padding: 0;
+        }
+        .slider-nav:hover {
+            background: rgba(212, 175, 55, 0.85);
+            color: #0b0f1c;
+            border-color: #d4af37;
+            box-shadow: 0 0 28px rgba(212, 175, 55, 0.5);
+        }
+        .slider-nav:focus-visible {
+            outline: 3px solid #d4af37;
+            outline-offset: 3px;
+        }
+        #prevBtn { left: 24px; }
+        #nextBtn { right: 24px; }
+
+        /* Bottom dots + progress */
+        .slider-bottom {
+            position: absolute;
+            bottom: 28px;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            pointer-events: none;
+        }
+        #sliderDots {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            pointer-events: auto;
+            padding: 8px 20px;
+            border-radius: 60px;
+            background: rgba(10, 20, 40, 0.35);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            box-shadow: none;
             position: relative;
             overflow: hidden;
         }
-
-        .dot::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-accent);
-            transition: left 0.3s ease;
-        }
-
-        .dot.active {
-            transform: scale(1.3);
-        }
-
-        .dot.active::before {
-            left: 0;
-        }
-
+        .dot::before { display: none; }
         .dot:hover {
-            background: var(--accent-light);
-            transform: scale(1.2);
+            background: rgba(212, 175, 55, 0.7);
+            transform: scale(1.25);
+        }
+        .dot.active {
+            background: #d4af37;
+            width: 28px;
+            border-radius: 20px;
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.6);
+        }
+        .dot:focus-visible {
+            outline: 2px solid #d4af37;
+            outline-offset: 4px;
         }
 
-        /* Slider Progress Bar */
-        .slider-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        #sliderProgressBar {
+            width: 220px;
+            max-width: 50vw;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            overflow: hidden;
+            pointer-events: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        #sliderProgressBar .progress-fill {
             width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            z-index: 11;
-        }
-
-        .slider-progress-bar {
             height: 100%;
-            background: var(--gradient-accent);
-            width: 0%;
-            transition: width 5s linear;
+            background: linear-gradient(90deg, #d4af37, #f5e6a3);
+            border-radius: 10px;
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.1s linear;
+        }
+        #sliderProgressBar .progress-fill.animate {
+            animation: heroProgress 7s linear infinite;
+        }
+        @keyframes heroProgress {
+            0%   { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
         }
 
-        .slider-progress-bar.active {
-            width: 100%;
-        }
-
-        /* ========== BACK TO TOP BUTTON ========== */
+        /* ============================================================
+           BACK TO TOP
+           ============================================================ */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 55px;
-            height: 55px;
+            width: 52px; height: 52px;
             background: var(--gradient-primary);
             color: white;
             border-radius: 50%;
@@ -821,924 +816,599 @@
             box-shadow: var(--shadow);
             z-index: 999;
             border: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
-
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .back-to-top.active { opacity: 1; visibility: visible; }
         .back-to-top:hover {
             background: var(--gradient-accent);
             transform: translateY(-5px);
         }
 
-        /* ========== RESPONSIVE BREAKPOINTS ========== */
-        
-        /* Big LED Screens (1920px and up) */
-        @media (min-width: 1920px) {
-            .container {
-                max-width: 1800px;
-                padding: 0 40px;
-            }
-            
-            .logo {
-                width: 110px;
-                height: 110px;
-            }
-            
-            .school-name h1 {
-                font-size: 2.5rem;
-            }
-            
-            .school-name p {
-                font-size: 1.2rem;
-            }
-            
-            .nav-links li a {
-                font-size: 1.1rem;
-                padding: 0 25px;
-            }
-            
-            .btn {
-                padding: 16px 32px;
-                font-size: 1.1rem;
-            }
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1199px) {
+            .school-name-title { font-size: 1.3rem; }
+            .nav-links li a { font-size: 0.85rem; padding: 0 8px; gap: 6px; }
+            .nav-links li a i { display: none; }
         }
 
-        /* Large Desktops (1440px to 1919px) */
-        @media (min-width: 1440px) and (max-width: 1919px) {
-            .container {
-                max-width: 1400px;
-            }
-            
-            .logo {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .school-name h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-        /* Desktops (1200px to 1439px) */
-        @media (min-width: 1200px) and (max-width: 1439px) {
-            .container {
-                max-width: 1200px;
-            }
-            
-            .logo {
-                width: 90px;
-                height: 90px;
-            }
-            
-            .school-name h1 {
-                font-size: 1.9rem;
-            }
-        }
-
-        /* Laptops (992px to 1199px) */
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .container {
-                max-width: 1000px;
-            }
-            
-            .header-info {
-                gap: 15px;
-            }
-            
-            .header-info-item {
-                font-size: 0.85rem;
-            }
-            
-            .school-name h1 {
-                font-size: 1.7rem;
-            }
-            
-            .nav-links li a {
-                font-size: 0.9rem;
-                padding: 0 15px;
-            }
-        }
-
-        /* Tablets (768px to 991px) */
         @media (max-width: 991px) {
-            .header-top-bar {
-                padding: 8px 0;
-            }
-            
-            .header-info-item span {
-                display: none;
-            }
-            
-            .header-info-item i {
-                margin-right: 0;
-                font-size: 1rem;
-            }
-            
-            .header-main {
-                padding: 15px 0;
-            }
-            
-            .logo {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .school-name h1 {
-                font-size: 1.5rem;
-            }
-            
-            .school-name p {
-                font-size: 0.9rem;
-            }
-            
-            .header-clock {
-                display: none;
-            }
-            
-            .header-highlight span {
-                font-size: 0.9rem;
-            }
-            
-            /* Show mobile toggle on tablets */
-            .mobile-nav-toggle {
-                display: flex;
-            }
-            
-            /* Hide desktop navigation on tablets */
-            .nav-links {
-                display: none;
+            :root { --header-h: 80px; }
+            .header-top-bar { display: none; }
+            .header-contact { display: none; }
+            .mobile-nav-toggle { display: inline-flex; }
+            .header-main-content { padding: 10px 0; gap: 10px; }
+            .logo { width: 56px; height: 56px; }
+            .school-name-title { font-size: 1.15rem; }
+            .school-meta { font-size: 0.72rem; }
+
+            .site-nav {
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
                 background: var(--nav-bg);
-                flex-direction: column;
-                box-shadow: var(--shadow-lg);
-                z-index: 1000;
-                height: auto;
-                max-height: 80vh;
-                overflow-y: auto;
+                box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease;
             }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                text-align: left;
-                border-bottom: 1px solid var(--border-color);
-                justify-content: flex-start;
-                height: auto;
-            }
-            
-            .nav-links li a {
-                padding: 18px 25px;
-                justify-content: flex-start;
-                font-size: 1.1rem;
-                border-bottom: none;
-            }
-            
-            .header-contact {
-                display: none;
-            }
-        }
-
-        /* Large Phones (576px to 767px) */
-        @media (max-width: 767px) {
-            .header-top-bar {
-                display: none;
-            }
-            
-            .header-main-content {
-                gap: 15px;
-            }
-            
-            .logo {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .school-name h1 {
-                font-size: 1.3rem;
-            }
-            
-            .school-name p {
-                font-size: 0.85rem;
-            }
-            
-            .header-controls {
-                gap: 10px;
-            }
-            
-            .mobile-nav-toggle {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .mobile-nav-toggle i {
-                font-size: 1.2rem;
-            }
-            
-            .day-night-toggle {
-                width: 48px;
-                height: 24px;
-            }
-            
-            .toggle-thumb {
-                width: 18px;
-                height: 18px;
-            }
-            
-            [data-theme="dark"] .toggle-thumb {
-                left: 26px;
-            }
-            
-            /* Slider adjustments for mobile */
-            .hero {
-                min-height: 450px;
-                max-height: 600px;
-            }
-            
-            .slide-content {
-                padding: 20px;
-                backdrop-filter: blur(3px);
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .btn {
-                width: 220px;
-                padding: 12px 24px;
-            }
-            
-            .slider-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-            
-            .slider-nav {
-                padding: 0 15px;
-            }
-        }
-
-        /* Small Phones (375px to 575px) */
-        @media (max-width: 575px) {
-            .container {
-                padding: 0 15px;
-            }
-            
-            .logo-container {
-                gap: 10px;
-            }
-            
-            .logo {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .school-name h1 {
-                font-size: 1.1rem;
-            }
-            
-            .school-name p {
-                font-size: 0.8rem;
-            }
-            
-            .day-night-toggle {
-                width: 45px;
-                height: 22px;
-            }
-            
-            .toggle-thumb {
-                width: 16px;
-                height: 16px;
-            }
-            
-            [data-theme="dark"] .toggle-thumb {
-                left: 25px;
-            }
-            
-            .mobile-nav-toggle {
-                width: 38px;
-                height: 38px;
-            }
-            
-            /* Slider adjustments for small phones */
-            .hero {
-                min-height: 400px;
-                max-height: 550px;
-            }
-            
-            .slide-content {
-                padding: 15px;
-                background: rgba(0, 0, 0, 0.4);
-            }
-            
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .dot {
-                width: 12px;
-                height: 12px;
-            }
-            
-            .slider-dots {
-                bottom: 25px;
-                gap: 12px;
-            }
-        }
-
-        /* Extra Small Phones (below 374px) */
-        @media (max-width: 374px) {
-            .logo-container {
-                gap: 8px;
-            }
-            
-            .logo {
-                width: 55px;
-                height: 55px;
-            }
-            
-            .school-name h1 {
-                font-size: 1rem;
-            }
-            
-            .school-name p {
-                font-size: 0.75rem;
-            }
-            
-            .header-controls {
-                gap: 8px;
-            }
-            
-            .day-night-toggle {
-                width: 42px;
-                height: 20px;
-            }
-            
-            .toggle-thumb {
-                width: 14px;
-                height: 14px;
-            }
-            
-            [data-theme="dark"] .toggle-thumb {
-                left: 24px;
-            }
-            
-            .mobile-nav-toggle {
-                width: 36px;
-                height: 36px;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Mobile Landscape */
-        @media (max-height: 500px) and (orientation: landscape) {
+            .site-nav.is-open { max-height: 80vh; overflow-y: auto; }
             .nav-links {
-                max-height: 70vh;
+                flex-direction: column;
+                height: auto;
             }
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .nav-links li a {
+                justify-content: flex-start;
+                padding: 16px 24px;
+                font-size: 1rem;
+                border-bottom: none;
+                transition: padding-left 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+            }
+            .nav-links li a i { display: inline-block; }
+            .nav-links li a:hover,
+            .nav-links li a:focus-visible {
+                padding-left: 28px;
+                transform: none;
+            }
+
+            .hero { height: 78vh; min-height: 500px; }
+            .slide-content { padding: 0 6%; }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        @media (max-width: 767px) {
+            .hero { height: 72vh; min-height: 440px; }
+            .slide-title { font-size: 2rem; }
+            .slide-desc { font-size: 0.95rem; margin-top: 1rem; }
+            .slide-cta { margin-top: 1.6rem; gap: 0.8rem; }
+            .hero .btn-gold,
+            .hero .btn-outline { padding: 0.7rem 1.6rem; font-size: 0.9rem; }
+            .slider-nav { width: 42px; height: 42px; font-size: 1.4rem; }
+            #prevBtn { left: 12px; }
+            #nextBtn { right: 12px; }
+            .slider-bottom { bottom: 18px; gap: 10px; }
+            #sliderDots { gap: 10px; padding: 6px 16px; }
+            .dot.active { width: 22px; }
+            #sliderProgressBar { width: 150px; }
+        }
+
+        @media (max-width: 575px) {
+            .school-name-title { font-size: 1rem; }
+            .school-meta { font-size: 0.68rem; }
+            .logo { width: 48px; height: 48px; }
+            .theme-toggle-track { width: 44px; height: 24px; }
+            .theme-toggle-thumb { width: 18px; height: 18px; }
+            [data-theme="dark"] .theme-toggle-thumb { left: 22px; }
+            .mobile-nav-toggle { width: 38px; height: 38px; }
+            .back-to-top { width: 46px; height: 46px; bottom: 20px; right: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { height: 68vh; min-height: 400px; }
+            .slide-title { font-size: 1.7rem; }
+            .slide-desc { font-size: 0.85rem; line-height: 1.5; }
+            .slide-eyebrow { font-size: 0.65rem; letter-spacing: 0.22em; }
+            .hero .btn-gold,
+            .hero .btn-outline { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+        }
+
+        @media (max-width: 380px) {
+            .hero { min-height: 380px; }
+            .slide-content { padding: 0 5%; }
+            .slide-title { font-size: 1.45rem; }
+            .slide-desc { font-size: 0.8rem; }
+            .hero .btn-gold,
+            .hero .btn-outline { padding: 0.55rem 1rem; font-size: 0.75rem; }
+            #sliderProgressBar { width: 120px; }
+            .school-meta span:nth-child(4),
+            .school-meta .meta-dot { display: none; }
+            .theme-toggle-track { width: 40px; height: 22px; }
+            .theme-toggle-thumb { width: 16px; height: 16px; }
+            [data-theme="dark"] .theme-toggle-thumb { left: 20px; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .site-header,
+            .header-sticky-core,
+            .logo,
+            .school-name-title,
+            .school-meta,
+            .clock-icon,
+            .admission-badge::after,
+            .theme-toggle-thumb,
+            .theme-toggle-thumb i,
+            .mobile-nav-toggle i,
+            .site-nav,
+            .slide-image,
+            .slide-eyebrow,
+            .slide-title,
+            .slide-desc,
+            .slide-cta,
+            .slide { transition: none !important; animation: none !important; }
+            .slide.active .slide-image { transform: scale(1); }
+            #sliderProgressBar .progress-fill.animate {
+                animation: none;
+                transform: scaleX(1);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+    <header id="siteHeader" class="site-header" role="banner">
         <div class="header-wrapper">
-            <!-- Top Bar with contact info -->
+
+            <!-- Top info strip -->
             <div class="header-top-bar">
                 <div class="container header-top-content">
                     <div class="header-info">
                         <div class="header-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Mohddinpur Naibasti, Hardoi, UP</span>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span>Mohddinpur Naibasti, Madhoganj, Hardoi, UP – 241302</span>
                         </div>
                         <div class="header-info-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91-8081096231</span>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <a href="tel:+918081096231">+91-8081096231</a>
                         </div>
                         <div class="header-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@sdvlcollege.com</span>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:info@sdvlcollege.com">info@sdvlcollege.com</a>
                         </div>
                     </div>
-                    
                     <div class="header-top-right">
-                        <div class="header-social">
-                            <a href="#" class="social-icon" aria-label="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="YouTube">
-                                <i class="fab fa-youtube"></i>
-                            </a>
+                        <div class="header-social" aria-label="Social media">
+                            <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                            <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Main Header with logo and contact -->
-            <div class="header-main">
+
+            <!-- Sticky core -->
+            <div class="header-sticky-core" id="headerStickyCore">
                 <div class="container header-main-content">
-                    <div class="logo-container">
-                        <img src="image/logo.jpeg" alt="SDLV Inter College Logo" class="logo">
+
+                    <!-- Branding -->
+                    <a href="/" class="logo-container" aria-label="B.S.D.L.V. Inter College — Home">
+                        <img src="image/logo.jpeg" alt="B.S.D.L.V. Inter College logo" class="logo" width="90" height="90">
                         <div class="school-name">
-                            <h1>B.S.D.L.V.I. INTER COLLEGE</h1>
-                            <p><i class="fas fa-map-pin"></i> MOHDDINPUR NAIBASTI, HARDOI</p>
+                            <span class="school-name-title">B.S.D.L.V. Inter College</span>
+                            <p class="school-meta">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span>Established 2016</span>
+                                <span class="meta-dot" aria-hidden="true">•</span>
+                                <span>Madhoganj, Hardoi, UP</span>
+                            </p>
                         </div>
-                    </div>
-                    
+                    </a>
+
+                    <!-- Controls -->
                     <div class="header-controls">
-                        <!-- Dark/Light mode toggle button -->
-                        <div class="day-night-toggle" id="themeToggleBtn">
-                            <i class="fas fa-sun" id="sunIcon"></i>
-                            <i class="fas fa-moon" id="moonIcon"></i>
-                            <div class="toggle-thumb"></div>
-                        </div>
- 
-                        <!-- Mobile menu toggle button -->
-                        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
-                            <i class="fas fa-bars"></i>
+                        
+
+                        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle"
+                                aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+                            <i class="fas fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
-                    
+
+                    <!-- Clock + admission -->
                     <div class="header-contact">
-                        <div class="header-clock">
-                            <div class="clock-time" id="currentTime">00:00:00</div>
-                            <div class="clock-date" id="currentDate">Loading...</div>
+                        <div class="header-clock" id="headerClock">
+                            <i class="fas fa-clock clock-icon" aria-hidden="true"></i>
+                            <div class="clock-text">
+                                <span class="clock-time" id="currentTime">00:00</span>
+                                <span class="clock-date" id="currentDate">Loading…</span>
+                            </div>
                         </div>
-                        
-                        <a href="#admission" class="header-highlight">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Admission 2024-25 Open</span>
+
+                        <a href="https://wa.me/8081096231?text=Hello%20B.S.D.L.V.%20Inter%20College%20Team%2C%20I%20would%20like%20to%20enquire%20about%20admissions."
+                           class="admission-badge" target="_blank" rel="noopener"
+                           aria-label="Enquire about admissions on WhatsApp">
+                            <i class="fas fa-bullhorn" aria-hidden="true"></i>
+                            <span class="admission-text">
+                                <strong>Admissions Information</strong>
+                                <em>Enquire Now</em>
+                            </span>
+                            <i class="fas fa-arrow-right admission-arrow" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
+
+                <!-- Nav -->
+                <nav class="site-nav" aria-label="Primary navigation">
+                    <div class="container">
+                        
+                        <ul class="nav-links" id="navLinks">
+                            <li><a href="/"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                            <li><a href="/about"><i class="fas fa-info-circle" aria-hidden="true"></i> About</a></li>
+                            <li><a href="/facilities"><i class="fas fa-building" aria-hidden="true"></i> Facilities</a></li>
+                            <li><a href="/facultyStaff"><i class="fas fa-user-plus" aria-hidden="true"></i> Faculty & Staff</a></li>
+                            <li><a href="/gallery"><i class="fas fa-images" aria-hidden="true"></i> Gallery</a></li>
+                            <li><a href="/boy"><i class="fas fa-user-graduate" aria-hidden="true"></i> Student Portal</a></li>
+                            <li>
+                                <a href="https://wa.me/8081096231?text=Hello%20B.S.D.L.V.%20Inter%20College%20Team%2C%20I%20have%20a%20query%20—%20kindly%20assist%20me."
+                                   target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+                                    <i class="fas fa-address-book" aria-hidden="true"></i> Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-        
-            <!-- Navigation Menu -->
-            <nav>
-                <div class="container">
-                    <ul class="nav-links" id="navLinks">
-                        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
-                        <li><a href="/f"><i class="fas fa-building"></i> Facilities</a></li>
-                        <li><a href="/gallery"><i class="fas fa-images"></i> Gallery</a></li>
-                        <li><a href="/boy"><i class="fas fa-user-graduate"></i> Student Portal</a></li>
-                        <li>
-                            <a href="/staff"><i class="fas fa-users"></i> Our Staff</a>
-                        </li>
-                        <li><a href="/results"><i class="fas fa-chart-line"></i> Results</a></li>
-                        <li>
-                            <a href="https://wa.me/8081096231?text=Hello%20B.S.D.L.V.%20Inter%20College%20Team,%20I%20hope%20you%20are%20doing%20well.%20I%20have%20a%20query%20—%20kindly%20assist%20me." 
-                                target="_blank"
-                                title="Chat with us on WhatsApp">
-                                <i class="fas fa-address-book"></i> Contact
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+
         </div>
     </header>
 
-    <!-- Hero Section with Enhanced Slider -->
-    <section class="hero" id="home">
-        <div class="slider-container">
-            <div class="slider" id="slider">
-                <!-- Slide 1 -->
-                <div class="slide active">
-                    <img src="image/banner_01.jpg" alt="SDLV College Building">
-                    <div class="slide-content">
-                        <h1>Excellence in Education Since 1997</h1>
-                        <p>Providing quality education and shaping future leaders with world-class infrastructure</p>
-                        <div class="hero-btns">
-                            <a href="#admission" class="btn">Admission Open</a>
-                            <a href="#about" class="btn btn-accent">Explore Campus</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <img src="image/banner_02.jpg" alt="Students at SDLV">
-                    <div class="slide-content">
-                        <h1>Nurturing Young Minds</h1>
-                        <p>Creating an environment for holistic development and lifelong learning experiences</p>
-                        <div class="hero-btns">
-                            <a href="#academics" class="btn">Our Programs</a>
-                            <a href="#gallery" class="btn btn-accent">View Gallery</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <img src="image/banner_03.jpg" alt="College Achievements">
-                    <div class="slide-content">
-                        <h1>A Legacy of Achievements</h1>
-                        <p>Celebrating excellence in academics, sports, and co-curricular activities</p>
-                        <div class="hero-btns">
-                            <a href="#achievements" class="btn">Our Achievements</a>
-                            <a href="#contact" class="btn btn-accent">Join Us Today</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slider Navigation -->
-            <div class="slider-nav">
-                <button class="slider-btn" id="prevBtn" aria-label="Previous slide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="slider-btn" id="nextBtn" aria-label="Next slide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <!-- Slider Dots -->
-            <div class="slider-dots" id="sliderDots">
-                <span class="dot active" data-index="0" aria-label="Slide 1"></span>
-                <span class="dot" data-index="1" aria-label="Slide 2"></span>
-                <span class="dot" data-index="2" aria-label="Slide 3"></span>
-            </div>
-            
-            <!-- Slider Progress Bar -->
-            <div class="slider-progress">
-                <div class="slider-progress-bar" id="sliderProgressBar"></div>
-            </div>
-        </div>
-    </section>
+    <!-- Spacer to prevent content jump when header becomes fixed (desktop only) -->
+    <div class="site-header-spacer" aria-hidden="true"></div>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-chevron-up"></i>
-    </div>
+    <!-- ============================================================
+         HERO SLIDER
+         ============================================================ -->
+    
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </button>
 
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
     <script>
-        // ========== THEME TOGGLE FUNCTIONALITY ==========
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const body = document.body;
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIcon = document.getElementById('moonIcon');
-        
-        // Check for saved theme or prefer-color-scheme
+    (function () {
+        'use strict';
+
+        /* -----------------------------------------------------
+           1. HEADER STICKY STATE (desktop only — mobile normal)
+           ----------------------------------------------------- */
+        const siteHeader = document.getElementById('siteHeader');
+
+        function isDesktop() {
+            return window.innerWidth > 991;
+        }
+
+        function updateSticky() {
+            if (!siteHeader) return;
+            // Mobile pe fixed behavior hatao
+            if (!isDesktop()) {
+                siteHeader.classList.remove('is-stuck');
+                return;
+            }
+            const topBar = siteHeader.querySelector('.header-top-bar');
+            const threshold = topBar ? topBar.offsetHeight + 4 : 10;
+            siteHeader.classList.toggle('is-stuck', window.scrollY > threshold);
+        }
+
+        if (siteHeader) {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        updateSticky();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+            updateSticky();
+        }
+
+        /* -----------------------------------------------------
+           2. THEME TOGGLE
+           ----------------------------------------------------- */
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const bodyEl = document.body;
+
+        function applyTheme(isDark) {
+            bodyEl.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+            if (themeBtn) {
+                themeBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+                themeBtn.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+        }
+
+        let savedTheme = null;
+        try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme');
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            enableDarkMode();
-        }
-        
-        function enableDarkMode() {
-            body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            sunIcon.style.color = '#777';
-            moonIcon.style.color = '#ffcc66';
-        }
-        
-        function enableLightMode() {
-            body.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'light');
-            sunIcon.style.color = '#ff9900';
-            moonIcon.style.color = '#555';
-        }
-        
-        function toggleTheme() {
-            if (body.getAttribute('data-theme') === 'dark') {
-                enableLightMode();
-            } else {
-                enableDarkMode();
-            }
-        }
-        
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        
-        // ========== DIGITAL CLOCK ==========
-        function updateClock() {
-            const now = new Date();
-            const timeOptions = { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit', 
-                hour12: false 
-            };
-            const dateOptions = { 
-                weekday: 'short', 
-                year: 'numeric', 
-                month: 'short', 
-                day: 'numeric' 
-            };
-            
-            document.getElementById('currentTime').textContent = 
-                now.toLocaleTimeString('en-IN', timeOptions);
-            document.getElementById('currentDate').textContent = 
-                now.toLocaleDateString('en-IN', dateOptions);
-        }
-        
-        setInterval(updateClock, 1000);
-        updateClock();
-        
-        // ========== MOBILE NAVIGATION TOGGLE ==========
-        const mobileNavToggle = document.getElementById('mobileNavToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        function toggleMobileMenu() {
-            const isActive = navLinks.classList.toggle('active');
-            mobileNavToggle.classList.toggle('active');
-            mobileNavToggle.innerHTML = isActive ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = isActive ? 'hidden' : '';
-        }
-        
-        mobileNavToggle.addEventListener('click', toggleMobileMenu);
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 991) {
-                    closeMobileMenu();
-                }
+        applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                applyTheme(bodyEl.getAttribute('data-theme') !== 'dark');
             });
-        });
-        
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 991) {
-                if (!navLinks.contains(e.target) && 
-                    !mobileNavToggle.contains(e.target) && 
-                    navLinks.classList.contains('active')) {
-                    closeMobileMenu();
-                }
-            }
-        });
-        
-        function closeMobileMenu() {
-            navLinks.classList.remove('active');
-            mobileNavToggle.classList.remove('active');
-            mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        /* -----------------------------------------------------
+           3. LIVE CLOCK
+           ----------------------------------------------------- */
+        const clockEl = document.getElementById('headerClock');
+        const timeEl  = document.getElementById('currentTime');
+        const dateEl  = document.getElementById('currentDate');
+        let clockTimer = null;
+
+        function tickClock() {
+            if (!timeEl || !dateEl) return;
+            const now = new Date();
+            timeEl.textContent = now.toLocaleTimeString('en-IN', {
+                hour: '2-digit', minute: '2-digit', hour12: true
+            });
+            dateEl.textContent = now.toLocaleDateString('en-IN', {
+                weekday: 'short', day: 'numeric', month: 'short'
+            });
+        }
+
+        if (clockEl && timeEl && dateEl) {
+            tickClock();
+            clockTimer = setInterval(tickClock, 1000);
+            window.addEventListener('beforeunload', () => {
+                if (clockTimer) clearInterval(clockTimer);
+            });
+        }
+
+        /* -----------------------------------------------------
+           4. MOBILE NAV
+           ----------------------------------------------------- */
+        const mobileToggle = document.getElementById('mobileNavToggle');
+        const navLinks     = document.getElementById('navLinks');
+        const siteNav      = navLinks ? navLinks.closest('.site-nav') : null;
+
+        function openMenu() {
+            if (!siteNav || !mobileToggle) return;
+            siteNav.classList.add('is-open');
+            mobileToggle.setAttribute('aria-expanded', 'true');
+            mobileToggle.setAttribute('aria-label', 'Close navigation menu');
+            mobileToggle.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i>';
+            document.body.style.overflow = 'hidden';
+            const firstLink = navLinks && navLinks.querySelector('a');
+            if (firstLink) firstLink.focus({ preventScroll: true });
+        }
+
+        function closeMenu() {
+            if (!siteNav || !mobileToggle) return;
+            siteNav.classList.remove('is-open');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileToggle.setAttribute('aria-label', 'Open navigation menu');
+            mobileToggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
             document.body.style.overflow = '';
         }
-        
-        // ========== WINDOW RESIZE HANDLER ==========
-        function handleResize() {
-            if (window.innerWidth > 991 && navLinks.classList.contains('active')) {
-                closeMobileMenu();
-            }
-            
-            // Update mobile toggle display based on screen size
-            if (window.innerWidth <= 991) {
-                mobileNavToggle.style.display = 'flex';
-            } else {
-                mobileNavToggle.style.display = 'none';
-            }
+
+        function toggleMenu() {
+            if (!siteNav) return;
+            siteNav.classList.contains('is-open') ? closeMenu() : openMenu();
         }
-        
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial check
-        
-        // ========== ENHANCED SMOOTH SLIDER ==========
-        const slider = document.getElementById("slider");
-        const slides = document.querySelectorAll(".slide");
-        const dots = document.querySelectorAll(".dot");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        const progressBar = document.getElementById("sliderProgressBar");
-        
-        let currentSlide = 0;
-        let slideInterval;
-        const totalSlides = slides.length;
-        
-        // Initialize slider
-        function initSlider() {
-            updateDots();
-            startAutoSlide();
-            startProgressBar();
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
         }
-        
-        // Go to specific slide
-        function goToSlide(index) {
-            // Update current slide
-            currentSlide = index;
-            
-            // Hide all slides
-            slides.forEach(slide => {
-                slide.classList.remove('active');
+
+        if (navLinks) {
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 991) closeMenu();
+                });
             });
-            
-            // Show current slide
-            slides[currentSlide].classList.add('active');
-            
-            // Update dots
-            updateDots();
-            
-            // Reset progress bar
-            resetProgressBar();
         }
-        
-        // Next slide
-        function nextSlide() {
-            let nextIndex = currentSlide + 1;
-            
-            if (nextIndex >= totalSlides) {
-                nextIndex = 0;
+
+        document.addEventListener('click', (e) => {
+            if (!siteNav || !mobileToggle) return;
+            if (window.innerWidth <= 991 &&
+                siteNav.classList.contains('is-open') &&
+                !navLinks.contains(e.target) &&
+                !mobileToggle.contains(e.target)) {
+                closeMenu();
             }
-            
-            goToSlide(nextIndex);
-        }
-        
-        // Previous slide
-        function prevSlide() {
-            let prevIndex = currentSlide - 1;
-            
-            if (prevIndex < 0) {
-                prevIndex = totalSlides - 1;
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && siteNav && siteNav.classList.contains('is-open')) {
+                closeMenu();
+                if (mobileToggle) mobileToggle.focus();
             }
-            
-            goToSlide(prevIndex);
+        });
+
+        /* Resize: mobile pe state reset */
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 991) {
+                    closeMenu();
+                } else if (siteHeader) {
+                    siteHeader.classList.remove('is-stuck');
+                }
+                if (siteHeader) updateSticky();
+            }, 120);
+        });
+
+        /* -----------------------------------------------------
+           5. HERO SLIDER
+           ----------------------------------------------------- */
+        const sliderEl = document.getElementById('slider');
+        if (!sliderEl) return;
+
+        const slides   = sliderEl.querySelectorAll('.slide');
+        const dotsBox  = document.getElementById('sliderDots');
+        const sliderPrev = document.getElementById('prevBtn');
+        const sliderNext = document.getElementById('nextBtn');
+        const progress = document.getElementById('sliderProgressBar');
+        const container = sliderEl.closest('.slider-container');
+        const total    = slides.length;
+        const AUTO_MS  = 7000;
+        const reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        let current = 0;
+        let autoTimer = null;
+        let paused = false;
+
+        function buildDots() {
+            if (!dotsBox) return;
+            dotsBox.innerHTML = '';
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                dot.dataset.index = String(i);
+                dot.addEventListener('click', () => {
+                    goTo(i);
+                    restartAuto();
+                });
+                dotsBox.appendChild(dot);
+            });
         }
-        
-        // Update dots
+
+        function ensureProgressFill() {
+            if (!progress) return null;
+            let fill = progress.querySelector('.progress-fill');
+            if (!fill) {
+                fill = document.createElement('div');
+                fill.className = 'progress-fill';
+                progress.appendChild(fill);
+            }
+            return fill;
+        }
+
+        function restartProgress() {
+            const fill = ensureProgressFill();
+            if (!fill || reduced) return;
+            fill.classList.remove('animate');
+            void fill.offsetWidth;
+            fill.classList.add('animate');
+        }
+
         function updateDots() {
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
+            if (!dotsBox) return;
+            dotsBox.querySelectorAll('.dot').forEach((dot, i) => {
+                const on = i === current;
+                dot.classList.toggle('active', on);
+                dot.setAttribute('aria-selected', on ? 'true' : 'false');
             });
         }
-        
-        // Progress bar functions
-        function startProgressBar() {
-            progressBar.classList.add('active');
-            progressBar.style.transition = 'width 5s linear';
-            progressBar.style.width = '100%';
+
+        function goTo(index) {
+            if (!total) return;
+            if (index < 0) index = total - 1;
+            if (index >= total) index = 0;
+            current = index;
+            slides.forEach((s, i) => s.classList.toggle('active', i === current));
+            updateDots();
+            restartProgress();
         }
-        
-        function resetProgressBar() {
-            progressBar.classList.remove('active');
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            
-            // Force reflow
-            void progressBar.offsetWidth;
-            
-            // Restart progress bar
-            setTimeout(startProgressBar, 10);
+
+        function nextSlide() { goTo(current + 1); }
+        function prevSlide() { goTo(current - 1); }
+
+        function stopAuto() {
+            if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
         }
-        
-        // Auto slide
-        function startAutoSlide() {
-            stopAutoSlide();
-            slideInterval = setInterval(nextSlide, 5000);
+        function startAuto() {
+            stopAuto();
+            if (reduced || paused) return;
+            autoTimer = setInterval(nextSlide, AUTO_MS);
         }
-        
-        function stopAutoSlide() {
-            clearInterval(slideInterval);
+        function restartAuto() { stopAuto(); startAuto(); }
+
+        if (sliderPrev) sliderPrev.addEventListener('click', () => { prevSlide(); restartAuto(); });
+        if (sliderNext) sliderNext.addEventListener('click', () => { nextSlide(); restartAuto(); });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft')  { prevSlide(); restartAuto(); }
+            if (e.key === 'ArrowRight') { nextSlide(); restartAuto(); }
+        });
+
+        if (container) {
+            container.addEventListener('mouseenter', () => { paused = true; stopAuto(); });
+            container.addEventListener('mouseleave', () => { paused = false; startAuto(); });
+            container.addEventListener('focusin',   () => { paused = true; stopAuto(); });
+            container.addEventListener('focusout',  () => { paused = false; startAuto(); });
+
+            let touchStart = 0;
+            container.addEventListener('touchstart', (e) => {
+                touchStart = e.changedTouches[0].screenX;
+                stopAuto();
+            }, { passive: true });
+            container.addEventListener('touchend', (e) => {
+                const diff = touchStart - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) (diff > 0 ? nextSlide : prevSlide)();
+                startAuto();
+            }, { passive: true });
         }
-        
-        // Event listeners for slider
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
-        
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
-        
-        // Dot click events
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const index = parseInt(dot.getAttribute('data-index'));
-                if (index !== currentSlide) {
-                    goToSlide(index);
-                    stopAutoSlide();
-                    startAutoSlide();
-                }
-            });
-        });
-        
-        // Pause auto slide on hover
-        const sliderContainer = document.querySelector('.slider-container');
-        sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-        sliderContainer.addEventListener('mouseleave', startAutoSlide);
-        
-        // Touch support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        sliderContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            stopAutoSlide();
-        });
-        
-        sliderContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            setTimeout(startAutoSlide, 5000);
-        });
-        
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const difference = touchStartX - touchEndX;
-            
-            if (Math.abs(difference) > swipeThreshold) {
-                if (difference > 0) {
-                    // Swipe left - next slide
-                    nextSlide();
-                } else {
-                    // Swipe right - previous slide
-                    prevSlide();
-                }
-            }
-        }
-        
-        // Initialize slider
-        initSlider();
-        
-        // ========== BACK TO TOP BUTTON ==========
+
+        buildDots();
+        ensureProgressFill();
+        goTo(0);
+        startAuto();
+        window.addEventListener('beforeunload', stopAuto);
+
+        /* -----------------------------------------------------
+           6. BACK TO TOP
+           ----------------------------------------------------- */
         const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                backToTop.classList.toggle('active', window.scrollY > 300);
+            }, { passive: true });
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-        });
-        
-        // ========== SMOOTH SCROLLING ==========
+        }
+
+        /* -----------------------------------------------------
+           7. ANCHOR SCROLL with header offset
+           ----------------------------------------------------- */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId === '#home') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 991 && navLinks.classList.contains('active')) {
-                        closeMobileMenu();
-                    }
-                }
+            anchor.addEventListener('click', function (e) {
+                const id = this.getAttribute('href');
+                if (!id || id === '#') return;
+                const target = document.querySelector(id);
+                if (!target) return;
+                e.preventDefault();
+                const headerH = parseFloat(
+                    getComputedStyle(document.documentElement).getPropertyValue('--header-h')
+                ) || 120;
+                const y = target.getBoundingClientRect().top + window.scrollY - headerH;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+                if (window.innerWidth <= 991) closeMenu();
             });
         });
-        
-        // ========== INITIALIZE ON LOAD ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            updateClock();
-            handleResize();
-            initSlider();
-        });
+
+    })();
     </script>
 </body>
 </html>

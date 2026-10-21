@@ -4,13 +4,28 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\sdlvController;
 use App\Http\Controllers\TelegramBotController;
 
-Route::view('/','home');
+Route::view('/', 'home')->name('home');
 Route::view('/header','header');
-Route::view('/gallery','Gellary');
+Route::view('/gallery', 'Gellary')->name('gallery');
 Route::view('/footer','footer');
-Route::view('/facility','faclity');
-Route::view('/about','about');
-Route::view('/f','facilites');
+Route::view('/facultyStaff','faculty');
+Route::view('/about', 'About')->name('about');
+Route::view('/facilities', 'Facilites')->name('facilities');
+Route::redirect('/f', '/facilities', 301);
+Route::get('/sitemap.xml', function () {
+    $baseUrl = rtrim(config('app.url'), '/');
+    $paths = ['/', '/about', '/facilities', '/gallery', '/facultyStaff'];
+
+    return response()
+        ->view('sitemap', compact('baseUrl', 'paths'))
+        ->header('Content-Type', 'application/xml; charset=UTF-8');
+})->name('sitemap');
+Route::get('/robots.txt', function () {
+    $sitemapUrl = rtrim(config('app.url'), '/').'/sitemap.xml';
+
+    return response("User-agent: *\nAllow: /\nSitemap: {$sitemapUrl}\n", 200)
+        ->header('Content-Type', 'text/plain; charset=UTF-8');
+})->name('robots');
 Route::view('/Admin','Admin_login');
 Route::view('/Teacher','Teacher_login');
 Route::view('/boy','Student_login');
@@ -26,7 +41,7 @@ Route::view('/faculty','faculty_add');
 
 
 Route::view('/admins','Admin_sidebar');
-Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard'])->name('Admin_dashboard');
+Route::get('/admin/dashboard', [sdlvController::class, 'admin_dashboard'])->name('Admin_dashboard');
 Route::post("/teacher_login",[sdlvController::class,"teacher_login"]);
 Route::post("/student_login",[sdlvController::class,"student_login"]);
 Route::get('/admin_logout',[sdlvController::class,'admin_logout']);
