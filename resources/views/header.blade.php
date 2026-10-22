@@ -39,20 +39,9 @@
             --header-h: 140px;
         }
 
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #f8f9fa;
-            --card-bg: #2d2d2d;
-            --header-bg: #1a1a1a;
-            --nav-bg: #1a1a1a;
-            --nav-hover: rgba(255, 255, 255, 0.1);
-            --border-color: #444444;
-            --dark: #e2e8f0;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-            --gradient-primary: linear-gradient(135deg, #004080, #0066cc);
-            --gradient-accent: linear-gradient(135deg, #ff9900, #ffcc66);
-        }
+
+
+        
 
         html { scroll-behavior: smooth; }
 
@@ -71,12 +60,7 @@
             font-weight: 700;
             color: var(--primary);
         }
-        [data-theme="dark"] h1,
-        [data-theme="dark"] h2,
-        [data-theme="dark"] h3,
-        [data-theme="dark"] h4,
-        [data-theme="dark"] h5 { color: #f8f9fa; }
-
+       
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
         img { max-width: 100%; height: auto; display: block; }
@@ -123,9 +107,7 @@
             font-size: 0.85rem;
             padding: 8px 0;
         }
-        [data-theme="dark"] .header-top-bar { background: rgba(255, 255, 255, 0.04); }
-        [data-theme="dark"] .header-info-item,
-        [data-theme="dark"] .social-icon { color: #ccc; }
+      
 
         .header-top-content {
             display: flex;
@@ -164,7 +146,6 @@
             font-size: 0.8rem;
             transition: var(--transition);
         }
-        [data-theme="dark"] .social-icon { background: rgba(255, 255, 255, 0.08); }
         .social-icon:hover {
             background: var(--accent);
             color: #fff;
@@ -214,7 +195,6 @@
             text-overflow: ellipsis;
             transition: font-size 0.3s ease;
         }
-        [data-theme="dark"] .school-name-title { color: #f8f9fa; }
         .school-meta {
             display: flex;
             align-items: center;
@@ -278,31 +258,8 @@
             color: #fff;
             transition: opacity 0.25s ease, transform 0.35s ease;
         }
-        .theme-toggle-thumb .sun-icon { opacity: 1; transform: rotate(0) scale(1); }
-        .theme-toggle-thumb .moon-icon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
-        [data-theme="dark"] .theme-toggle-thumb { left: 26px; }
-        [data-theme="dark"] .theme-toggle-thumb .sun-icon { opacity: 0; transform: rotate(90deg) scale(0.4); }
-        [data-theme="dark"] .theme-toggle-thumb .moon-icon { opacity: 1; transform: rotate(0) scale(1); }
-
-        /* Mobile hamburger */
-        .mobile-nav-toggle {
-            display: none;
-            background: var(--gradient-accent);
-            color: #fff;
-            border: none;
-            width: 42px; height: 42px;
-            border-radius: 50%;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.05rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .mobile-nav-toggle:hover { transform: scale(1.05); box-shadow: var(--shadow); }
-        .mobile-nav-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-        .mobile-nav-toggle i { transition: transform 0.3s ease; }
-        .mobile-nav-toggle[aria-expanded="true"] i { transform: rotate(90deg); }
-
+       
+     
         /* Clock + admission */
         .header-contact {
             display: flex;
@@ -321,7 +278,6 @@
             padding: 6px 12px;
             transition: transform 0.3s ease;
         }
-        [data-theme="dark"] .header-clock { background: rgba(255,255,255,0.05); }
         .clock-icon {
             color: var(--accent);
             font-size: 1rem;
@@ -424,7 +380,6 @@
             transform: none;
             transition: color 0.25s ease, border-bottom-color 0.25s ease, background-color 0.25s ease;
         }
-        [data-theme="dark"] .nav-links li a { color: #ccc; }
         .nav-links li a:hover,
         .nav-links li a:focus-visible {
             color: var(--accent);
@@ -903,7 +858,6 @@
             .logo { width: 48px; height: 48px; }
             .theme-toggle-track { width: 44px; height: 24px; }
             .theme-toggle-thumb { width: 18px; height: 18px; }
-            [data-theme="dark"] .theme-toggle-thumb { left: 22px; }
             .mobile-nav-toggle { width: 38px; height: 38px; }
             .back-to-top { width: 46px; height: 46px; bottom: 20px; right: 20px; }
         }
@@ -929,7 +883,6 @@
             .school-meta .meta-dot { display: none; }
             .theme-toggle-track { width: 40px; height: 22px; }
             .theme-toggle-thumb { width: 16px; height: 16px; }
-            [data-theme="dark"] .theme-toggle-thumb { left: 20px; }
         }
 
         /* Reduced motion */
