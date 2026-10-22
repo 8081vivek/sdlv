@@ -1,14 +1,21 @@
-FROM php:8.2-fpm-alpine
 
-RUN apk add --no-cache nginx bash supervisor \
-    libzip libpng libjpeg-turbo freetype \
-    && apk add --no-cache --virtual .build-deps \
-       $PHPIZE_DEPS libzip-dev libpng-dev \
-       libjpeg-turbo-dev freetype-dev \
-    && docker-php-ext-configure gd \
-       --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring bcmath exif gd zip opcache \
-    && apk del .build-deps
+FROM php:8.2-fpm
+
+RUN apt-get update && apt-get install -y \
+    nginx \
+    bash \
+    libzip-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    unzip \
+    git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" \
+       pdo_mysql mbstring bcmath exif gd zip opcache \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -23,7 +30,7 @@ RUN composer install --no-dev --no-interaction \
        bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache
 
-COPY deploy/nginx.conf /etc/nginx/http.d/default.conf
+COPY deploy/nginx.conf /etc/nginx/sites-available/default
 COPY deploy/start.sh /start.sh
 RUN chmod +x /start.sh
 
