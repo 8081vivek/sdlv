@@ -34,19 +34,7 @@
         }
 
         /* Dark Mode Variables */
-        body.dark-mode {
-            --footer-bg: #1a1a1a;  /* Solid dark color */
-            --footer-text: #e6e6e6;
-            --footer-heading: #ffffff;
-            --footer-link: rgba(255, 255, 255, 0.75);
-            --footer-link-hover: #4dabf7;
-            --footer-border: rgba(255, 255, 255, 0.15);
-            --social-bg: rgba(255, 255, 255, 0.15);
-            --social-hover: #4dabf7;
-            --footer-bottom-text: rgba(255, 255, 255, 0.6);
-            --icon-color: #4dabf7;
-        }
-
+     
         .container {
             width: 100%;
             max-width: 1200px;
@@ -239,15 +227,9 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        body:not(.dark-mode) .page-content {
-            background-color: #f8f9fa;
-            color: #333;
-        }
+        
 
-        body.dark-mode .page-content {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
+      
 
         /* Header Styles (with toggle button) */
         .header {
@@ -257,10 +239,7 @@
             transition: all 0.3s ease;
         }
 
-        body.dark-mode .header {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-        }
-
+      
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -348,13 +327,8 @@
             transition: color 0.3s ease;
         }
 
-        body:not(.dark-mode) .content-container h2 {
-            color: #1a4b8c;
-        }
-
-        body.dark-mode .content-container h2 {
-            color: #4dabf7;
-        }
+    
+     
 
         .content-container p {
             font-size: 1.1rem;
@@ -377,16 +351,8 @@
             transition: all 0.3s ease;
         }
 
-        body:not(.dark-mode) .stat-item {
-            background: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
 
-        body.dark-mode .stat-item {
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
+    
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
@@ -394,13 +360,6 @@
             transition: color 0.3s ease;
         }
 
-        body:not(.dark-mode) .stat-number {
-            color: #1a4b8c;
-        }
-
-        body.dark-mode .stat-number {
-            color: #4dabf7;
-        }
 
         .stat-label {
             font-size: 1rem;
