@@ -6,7 +6,7 @@ use App\Http\Controllers\TelegramBotController;
 
 Route::view('/', 'home')->name('home');
 Route::view('/header','header');
-Route::view('/gallery', 'Gellary')->name('gallery');
+Route::view('/schoolGallery', 'Gellary');
 Route::view('/footer','footer');
 Route::view('/facultyStaff','faculty');
 Route::view('/about', 'About')->name('about');
