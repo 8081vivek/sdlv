@@ -1008,7 +1008,7 @@
                             <li><a href="/about"><i class="fas fa-info-circle" aria-hidden="true"></i> About</a></li>
                             <li><a href="/facilities"><i class="fas fa-building" aria-hidden="true"></i> Facilities</a></li>
                             <li><a href="/facultyStaff"><i class="fas fa-user-plus" aria-hidden="true"></i> Faculty & Staff</a></li>
-                            <li><a href="/gallery"><i class="fas fa-images" aria-hidden="true"></i> Gallery</a></li>
+                            <li><a href="/schoolGallery"><i class="fas fa-images" aria-hidden="true"></i> Gallery</a></li>
                             <li><a href="/boy"><i class="fas fa-user-graduate" aria-hidden="true"></i> Student Portal</a></li>
                             <li>
                                 <a href="https://wa.me/8081096231?text=Hello%20B.S.D.L.V.%20Inter%20College%20Team%2C%20I%20have%20a%20query%20—%20kindly%20assist%20me."
