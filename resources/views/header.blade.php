@@ -910,6 +910,34 @@
                 transform: scaleX(1);
             }
         }
+
+        /* Mobile Toggle — Hidden on Desktop */
+.mobile-nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-nav-toggle:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Show Toggle Only on Mobile and Tablet */
+@media (max-width: 991px) {
+    .mobile-nav-toggle {
+        display: inline-flex;
+    }
+}
     </style>
 </head>
 <body>
