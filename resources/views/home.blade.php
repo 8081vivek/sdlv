@@ -457,17 +457,7 @@
             --gradient-accent: linear-gradient(135deg, #f9a826, #ffc55a);
         }
 
-        [data-theme="dark"] {
-            --light: #121212;
-            --dark: #e2e8f0;
-            --card-bg: #1e1e1e;
-            --section-bg: #121212;
-            --border-color: #333333;
-            --text-muted: #a0aec0;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
-        }
-
+   
         /* ============================================================
    GLOBAL BODY BACKGROUND — fixed campus photo texture
    Light mode: subtle campus photo · Dark mode: soft navy
@@ -511,12 +501,7 @@ body::before {
             font-weight: 700;
             color: var(--primary);
         }
-        [data-theme="dark"] h1,
-        [data-theme="dark"] h2,
-        [data-theme="dark"] h3,
-        [data-theme="dark"] h4,
-        [data-theme="dark"] h5 { color: #90cdf4; }
-
+       
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
         img { max-width: 100%; height: auto; }
@@ -3510,8 +3495,7 @@ body::before {
         }
         .message-content h2,
         .manager-content h2 { margin-bottom: 20px; color: var(--primary); }
-        [data-theme="dark"] .message-content h2,
-        [data-theme="dark"] .manager-content h2 { color: #90cdf4; }
+       
         .message-content p,
         .manager-content p {
             margin-bottom: 15px;
@@ -3525,8 +3509,7 @@ body::before {
             margin-top: 20px;
             font-style: italic;
         }
-        [data-theme="dark"] .principal-name,
-        [data-theme="dark"] .manager-name { color: var(--accent); }
+        
 
         /* ============================================================
            FACILITIES
@@ -4989,7 +4972,6 @@ body.gallery-lightbox-open {
             margin-bottom: 20px;
             color: var(--primary);
         }
-        [data-theme="dark"] .contact-info h3 { color: #90cdf4; }
         .contact-details { margin-bottom: 30px; }
         .contact-item {
             display: flex;
@@ -5785,9 +5767,7 @@ body.gallery-lightbox-open {
     color: #0D2B55;
     margin: 0 0 18px;
 }
-[data-theme="dark"] .school-stats__title {
-    color: #f8f9fa;
-}
+
 .school-stats__title-accent {
     background: linear-gradient(90deg, #D6AD52, #f0d78c, #D6AD52);
     background-size: 200% auto;
@@ -5808,9 +5788,7 @@ body.gallery-lightbox-open {
     max-width: 640px;
     margin: 0 auto;
 }
-[data-theme="dark"] .school-stats__subtitle {
-    color: #a0aec0;
-}
+
 
 /* ---- Grid ---- */
 .school-stats__grid {
@@ -5837,11 +5815,7 @@ body.gallery-lightbox-open {
         box-shadow 0.4s ease;
     will-change: transform;
 }
-[data-theme="dark"] .school-stat-card {
-    background: #1a2638;
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
-}
+
 
 /* Gold/navy alternating border-bottom */
 .school-stat-card::after {
@@ -5861,9 +5835,7 @@ body.gallery-lightbox-open {
     transform: translateY(-8px);
     box-shadow: 0 20px 44px -12px rgba(13, 43, 85, 0.22);
 }
-[data-theme="dark"] .school-stat-card:hover {
-    box-shadow: 0 20px 44px -12px rgba(0, 0, 0, 0.7);
-}
+
 
 /* ---- Icon badge (overlaps top edge) ---- */
 .school-stat-card__badge {
@@ -5885,11 +5857,7 @@ body.gallery-lightbox-open {
         0 0 0 4px #ffffff;
     animation: statBadgeFloat 6s ease-in-out infinite;
 }
-[data-theme="dark"] .school-stat-card__badge {
-    box-shadow:
-        0 8px 20px -6px rgba(0, 0, 0, 0.5),
-        0 0 0 4px #1a2638;
-}
+
 @keyframes statBadgeFloat {
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50%      { transform: translateX(-50%) translateY(-4px); }
@@ -5944,9 +5912,7 @@ body.gallery-lightbox-open {
     color: #0D2B55;
     margin: 0 0 14px;
 }
-[data-theme="dark"] .school-stat-card__label {
-    color: #e2e8f0;
-}
+
 
 .school-stat-card__divider {
     display: block;
@@ -5965,9 +5931,7 @@ body.gallery-lightbox-open {
     margin: 0;
     max-width: 200px;
 }
-[data-theme="dark"] .school-stat-card__desc {
-    color: #a0aec0;
-}
+
 
 /* ---- Card image (bottom) ---- */
 .school-stat-card__image {
