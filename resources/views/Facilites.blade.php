@@ -612,7 +612,6 @@
             margin: 0 0 16px;
             line-height: 1.2;
         }
-        [data-theme="dark"] .fac-intro__title { color: #f8f9fa; }
 
         .fac-intro__divider {
             display: block;
@@ -659,7 +658,6 @@
             padding: 100px 0;
             background: var(--light);
         }
-        [data-theme="dark"] .fac-grid-section { background: #0a0f14; }
 
         .fac-grid-section__head {
             text-align: center;
@@ -674,7 +672,6 @@
             color: var(--primary);
             margin: 0 0 16px;
         }
-        [data-theme="dark"] .fac-grid-section__title { color: #f8f9fa; }
 
         .fac-grid-section__divider {
             display: block;
@@ -771,7 +768,6 @@
             margin: 0 0 10px;
             line-height: 1.3;
         }
-        [data-theme="dark"] .fac-card__title { color: #f8f9fa; }
 
         .fac-card__desc {
             font-size: 0.9rem;
@@ -799,7 +795,6 @@
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
         }
-        [data-theme="dark"] .fac-featured__grid { background: #1e1e1e; }
 
         .fac-featured__image {
             border-radius: 16px;
@@ -855,7 +850,6 @@
             margin: 0 0 20px;
             line-height: 1.25;
         }
-        [data-theme="dark"] .fac-featured__title { color: #f8f9fa; }
 
         .fac-featured__desc {
             font-size: 1rem;
@@ -894,7 +888,6 @@
             padding: 100px 0;
             background: var(--light);
         }
-        [data-theme="dark"] .fac-gallery { background: #0a0f14; }
 
         .fac-gallery__grid {
             display: grid;
@@ -1010,7 +1003,6 @@
             border: 1px solid var(--border-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        [data-theme="dark"] .fac-why__item { background: #1e1e1e; }
 
         .fac-why__item:hover {
             transform: translateY(-6px);
@@ -1044,7 +1036,6 @@
             color: var(--primary);
             margin: 0 0 8px;
         }
-        [data-theme="dark"] .fac-why__title { color: #f8f9fa; }
 
         .fac-why__desc {
             font-size: 0.88rem;
